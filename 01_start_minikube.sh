@@ -1,0 +1,3 @@
+minikube delete
+minikube start
+
