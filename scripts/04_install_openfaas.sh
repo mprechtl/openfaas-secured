@@ -23,7 +23,7 @@ helm repo update \
 # To use an IngressController add --set ingress.enabled=true
 
 OPENFAAS_URL=$(minikube ip):31112
-echo ${OPENFAAS_URL} > openfaas_url.txt
+echo ${OPENFAAS_URL} > openfaas_ui_url.txt
 
 echo "OpenFaaS-URL: ${OPENFAAS_URL}"
 echo "Password: ${PASSWORD}"

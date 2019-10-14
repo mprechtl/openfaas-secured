@@ -1,5 +1,5 @@
 OPENFAAS_PASSWORD_FILE="./openfaas_password.txt"
-OPENFAAS_URL_FILE="./openfaas_url.txt"
+OPENFAAS_URL_FILE="./openfaas_ui_url.txt"
 
 OPENFAAS_PASSWORD=$(cat ${OPENFAAS_PASSWORD_FILE})
 OPENFAAS_URL=$(cat ${OPENFAAS_URL_FILE})

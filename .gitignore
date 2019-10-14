@@ -1,3 +1,5 @@
 openfaas_password.txt
-openfaas_url.txt
+openfaas_ui_url.txt
+kong_proxy.txt
+kong_admin_url.txt
 
