@@ -56,3 +56,9 @@ printf "${green}\t\t\tTest sample functions\n${egreen}"
 printf "${green}====================================================================================================\n\n${egreen}"
 
 ./functions/test_functions.sh
+
+printf "${green}\n\n====================================================================================================\n${egreen}"
+printf "${green}\t\t\tEnable Basic Authentication for functions\n${egreen}"
+printf "${green}====================================================================================================\n\n${egreen}"
+
+./auth/01_enable_basic_auth_for_functions.sh
