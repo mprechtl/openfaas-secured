@@ -2,9 +2,12 @@ kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/na
 
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 
+ABS_PATH=$(readlink -f $0)
+ABS_DIR=$(dirname $ABS_PATH)
+
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
-echo ${PASSWORD} > openfaas_password.txt
+echo ${PASSWORD} > ${ABS_DIR}/../openfaas_password.txt
 
 # OpenFaaS basic authentication
 kubectl -n openfaas create secret generic basic-auth \
@@ -23,7 +26,7 @@ helm repo update \
 # To use an IngressController add --set ingress.enabled=true
 
 OPENFAAS_URL=$(minikube ip):31112
-echo ${OPENFAAS_URL} > openfaas_ui_url.txt
+echo ${OPENFAAS_URL} > ${ABS_DIR}/../openfaas_ui_url.txt
 
 echo "OpenFaaS-URL: ${OPENFAAS_URL}"
 echo "Password: ${PASSWORD}"

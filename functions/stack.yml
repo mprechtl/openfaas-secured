@@ -1,0 +1,8 @@
+provider:
+  name: faas
+
+functions:
+  haveibeenpwned:
+    lang: go
+    handler: ./haveibeenpwned
+    image: functions/haveibeenpwned:0.13.0
