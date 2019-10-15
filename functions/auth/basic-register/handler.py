@@ -1,17 +1,48 @@
 import requests
+import json 
+import urllib3
+from jsonschema import validate
+
 
 def handle(req):
     """handle a request to the function
     Args:
         req (str): request body
     """
-    # Username and Password extracted from the request
-    username=req['username']
-    password=req['password']
-
     # Function response
     resp = {}
+
+    # Schema to validate JSON document
+    schema = {
+        "type" : "object",
+        "properties" : {
+            "username" : {"type" : "string"},
+            "password" : {"type" : "string"},
+        },
+        "required": ["username", "password"]
+    }
     
+    # Username and Password extracted from the request
+    try:
+        body_json = json.loads(req)
+
+        # validate request body against schema
+        validate(instance=body_json, schema=schema)
+
+        username=body_json['username']
+        password=body_json['password']
+    except jsonschema.exceptions.ValidationError as e:
+        resp['status_code'] = 400
+        resp['message'] = "Bad Request: You provided a malformed JSON document."
+        return resp    
+    except ValueError as e:
+        resp['status_code'] = 400
+        resp['message'] = "Bad Request: You have to provide a valid JSON document with a username and password."
+        return resp  
+
+    # Disable InsecureRequestWarning because of self-signed certificates
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
     # Get Ingress Admin URL which is stored in a secret
     ingress_admin_url_secret = "/var/openfaas/secrets/ingress-admin-url"
     with open(ingress_admin_url_secret) as f:
@@ -21,21 +52,23 @@ def handle(req):
     url = ingress_admin_url + "/consumers/"
     headers = {'content-type': 'application/x-www-form-urlencoded', 'Accept': '*/*'}
     data = {'username': username}
-    # verify == False, because self-signed certificates are used
     response = requests.post(url, data=data, headers=headers, verify=False)
 
     if response.status_code == 201:
         # Create credentials for consumer
         url = ingress_admin_url + "/consumers/" + username + "/basic-auth"
         data = {'username': username, 'password': password}
-        # verify == False, because self-signed certificates are used
-        response = requests.post(url, dataa=data, headers=headers, verify=False)
+        response = requests.post(url, data=data, headers=headers, verify=False)
 
         if response.status_code == 201:
-            resp.status_code = 201
-            resp.message = ""
+            resp['status_code'] = 201
+            resp['message'] = ""
             return resp
 
-    resp.status_code = 400
-    resp.message = "Bad Request: Unable to create user with the provided credentials."
+    resp['status_code'] = response.status_code
+    if response.status_code == 409:
+        resp['message'] = "Username already taken."
+    else:
+        resp['message'] = "Unable to create user with the provided credentials."
+
     return resp
