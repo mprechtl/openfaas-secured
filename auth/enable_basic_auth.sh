@@ -60,3 +60,4 @@ BASIC_AUTH_CREDENTIALS=$(echo -n ${USERNAME}:${PASSWORD} | base64)
 curl --url ${INGRESS_PROXY_URL}/function/haveibeenpwned --data 'test@test.com' -H "Authorization: Basic ${BASIC_AUTH_CREDENTIALS}" -v
 
 printf "\n"
+

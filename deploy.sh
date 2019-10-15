@@ -61,4 +61,5 @@ printf "${green}\n\n============================================================
 printf "${green}\t\t\tEnable Basic Authentication for functions\n${egreen}"
 printf "${green}====================================================================================================\n\n${egreen}"
 
-./auth/01_enable_basic_auth_for_functions.sh
+./auth/enable_basic_auth.sh
+
