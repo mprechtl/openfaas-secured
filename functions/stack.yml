@@ -10,3 +10,10 @@ functions:
     lang: go
     handler: ./haveibeenpwned
     image: functions/haveibeenpwned:0.13.0
+  basic-register:
+    lang: python3
+    handler: ./auth/basic-register
+    image: mprechtl/basic-register:latest
+    secrets:
+      - ingress-admin-url
+

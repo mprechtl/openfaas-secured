@@ -9,4 +9,4 @@ OPENFAAS_URL_FILE="${ABS_DIR}/../openfaas_ui_url.txt"
 OPENFAAS_URL=$(cat ${OPENFAAS_URL_FILE})
 
 printf "${blue}Test 'haveibeenpwned' function\n\n${eblue}"
-curl -X POST --url ${OPENFAAS_URL}/function/haveibeenpwned --data 'test@test.com'
+curl -X POST --url ${OPENFAAS_URL}/function/unprotected-haveibeenpwned --data 'test@test.com'
