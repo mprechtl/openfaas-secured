@@ -16,5 +16,7 @@ kubectl create secret generic ingress-admin-url \
 # Build OpenFaaS functions and deploy them
 cd ${ABS_DIR}
 faas-cli build -f stack.yml
+faas push --filter "basic-register"
 faas-cli deploy stack.yml --gateway ${OPENFAAS_URL}
 cd -
+
