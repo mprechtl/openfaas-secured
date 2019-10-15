@@ -19,4 +19,3 @@ echo ${PROXY_IP} > kong_proxy.txt
 printf "\nTesting connectivity to Kong..."
 curl -i ${PROXY_IP}
 printf "\nTest was successful.\n"
-

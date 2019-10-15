@@ -2,7 +2,11 @@ provider:
   name: faas
 
 functions:
-  haveibeenpwned:
+  unprotected-haveibeenpwned:
+    lang: go
+    handler: ./haveibeenpwned
+    image: functions/haveibeenpwned:0.13.0
+  protected-haveibeenpwned:
     lang: go
     handler: ./haveibeenpwned
     image: functions/haveibeenpwned:0.13.0
