@@ -44,6 +44,7 @@ printf "${green}================================================================
 
 ./ingress/kong/scripts/01_install_kong_ingress_controller.sh
 ./ingress/kong/scripts/02_wait_til_kong_is_up.sh
+./ingress/kong/scripts/03_enable_routing.sh
 
 printf "${green}\n\n====================================================================================================\n${egreen}"
 printf "${green}\t\t\t\tDeploy sample functions\n${egreen}"

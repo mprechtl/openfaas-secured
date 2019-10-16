@@ -15,51 +15,10 @@ INGRESS_PROXY_URL=$(cat ${INGRESS_PROXY_URL_FILE})
 
 
 ###########################################################################################
-#                       Create Username and Password
-###########################################################################################
-
-USERNAME="test"
-echo ${USERNAME} > ${ABS_DIR}/../../../function_username.txt
-
-PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
-echo ${PASSWORD} > ${ABS_DIR}/../../../function_password.txt
-
-
-###########################################################################################
-#                       Routing
-###########################################################################################
-
-printf "${blue}Add OpenFaaS as service to Kong...${eblue}\n\n"
-
-curl -k -X PUT \
-    ${INGRESS_ADMIN_URL}/services/function \
-    -d "url=http://${OPENFAAS_URL}"
-
-# Create routing for protected functions
-printf "\n\n${blue}Create routing to protected functions...${eblue}\n\n"
-
-curl -k -X POST \
-    ${INGRESS_ADMIN_URL}/services/function/routes \
-    -d 'name=protected-functions' \
-    -d 'strip_path=false' \
-    --data-urlencode 'paths[]=/function/protected-haveibeenpwned'
-
-# Create routing for unprotected functions
-printf "\n\n${blue}Create routing to unprotected functions...${eblue}\n\n"
-
-curl -k -X POST \
-    ${INGRESS_ADMIN_URL}/services/function/routes \
-    -d 'name=unprotected-functions' \
-    -d 'strip_path=false' \
-    --data-urlencode 'paths[]=/function/basic-register' \
-    --data-urlencode 'paths[]=/function/unprotected-haveibeenpwned'
-
-
-###########################################################################################
 #                       Enable Basic Authentication
 ###########################################################################################
 
-printf "\n\n${blue}Enable basic authentication for functions...${eblue}\n\n"
+printf "${blue}Enable basic authentication for functions...${eblue}\n\n"
 
 # Enable basic authentication
 curl -k -X POST ${INGRESS_ADMIN_URL}/routes/protected-functions/plugins \
@@ -70,6 +29,12 @@ curl -k -X POST ${INGRESS_ADMIN_URL}/routes/protected-functions/plugins \
 ###########################################################################################
 #                       Create Users (Basic Auth)
 ###########################################################################################
+
+USERNAME="test"
+echo ${USERNAME} > ${ABS_DIR}/../../../function_username.txt
+
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+echo ${PASSWORD} > ${ABS_DIR}/../../../function_password.txt
 
 printf "\n\n${blue}Create credentials for user '${USERNAME}' with password '${PASSWORD}'...${eblue}\n\n"
 
