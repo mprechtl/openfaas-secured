@@ -95,8 +95,8 @@ BASIC_AUTH_CREDENTIALS_WRONG=$(echo -n wrong:wrong | base64)
 curl --url ${INGRESS_PROXY_URL}/function/protected-haveibeenpwned --data 'test@test.com' -H "Authorization: Basic ${BASIC_AUTH_CREDENTIALS_WRONG}" -v
 
 # Test unprotected function
-printf "\n\n${blue}Test unprotected 'basic-register' function\n\n${eblue}"
+printf "\n\n${blue}Test unprotected 'haveibeenpwned' function\n\n${eblue}"
 
-curl --url ${INGRESS_PROXY_URL}/function/basic-register -v
+curl --url ${INGRESS_PROXY_URL}/function/unprotected-haveibeenpwned --data 'test@test.com' -v
 
 printf "\n"

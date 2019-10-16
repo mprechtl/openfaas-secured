@@ -1,7 +1,8 @@
 import requests
 import json 
 import urllib3
-from jsonschema import validate
+from jsonschema import validate 
+from jsonschema.exceptions import ValidationError
 
 
 def handle(req):
@@ -31,9 +32,9 @@ def handle(req):
 
         username=body_json['username']
         password=body_json['password']
-    except jsonschema.exceptions.ValidationError as e:
+    except ValidationError as e:
         resp['status_code'] = 400
-        resp['message'] = "Bad Request: You provided a malformed JSON document."
+        resp['message'] = "Bad Request: You provided a malformed or invalid JSON document."
         return resp    
     except ValueError as e:
         resp['status_code'] = 400
