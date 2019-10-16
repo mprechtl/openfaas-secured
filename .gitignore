@@ -3,6 +3,8 @@ openfaas_password.txt
 openfaas_ui_url.txt
 kong_proxy.txt
 kong_admin_url.txt
+function_password.txt
+function_username.txt
 
 # OpenFaaS build, template folders, ..
 template/

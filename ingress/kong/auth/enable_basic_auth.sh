@@ -4,13 +4,13 @@ eblue=$'\e[0m'
 ABS_PATH=$(readlink -f $0)
 ABS_DIR=$(dirname $ABS_PATH)
 
-OPENFAAS_URL_FILE="${ABS_DIR}/../openfaas_ui_url.txt"
+OPENFAAS_URL_FILE="${ABS_DIR}/../../../openfaas_ui_url.txt"
 OPENFAAS_URL=$(cat ${OPENFAAS_URL_FILE})
 
-INGRESS_ADMIN_URL_FILE="${ABS_DIR}/../kong_admin_url.txt"
+INGRESS_ADMIN_URL_FILE="${ABS_DIR}/../../../kong_admin_url.txt"
 INGRESS_ADMIN_URL=$(cat ${INGRESS_ADMIN_URL_FILE})
 
-INGRESS_PROXY_URL_FILE="${ABS_DIR}/../kong_proxy.txt"
+INGRESS_PROXY_URL_FILE="${ABS_DIR}/../../../kong_proxy.txt"
 INGRESS_PROXY_URL=$(cat ${INGRESS_PROXY_URL_FILE})
 
 
@@ -19,10 +19,10 @@ INGRESS_PROXY_URL=$(cat ${INGRESS_PROXY_URL_FILE})
 ###########################################################################################
 
 USERNAME="test"
-echo ${USERNAME} > ${ABS_DIR}/../function_username.txt
+echo ${USERNAME} > ${ABS_DIR}/../../../function_username.txt
 
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
-echo ${PASSWORD} > ${ABS_DIR}/../function_password.txt
+echo ${PASSWORD} > ${ABS_DIR}/../../../function_password.txt
 
 
 ###########################################################################################

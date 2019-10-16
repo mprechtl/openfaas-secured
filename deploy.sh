@@ -52,14 +52,8 @@ printf "${green}================================================================
 ./functions/deploy_functions.sh
 
 printf "${green}\n\n====================================================================================================\n${egreen}"
-printf "${green}\t\t\tTest sample functions\n${egreen}"
-printf "${green}====================================================================================================\n\n${egreen}"
-
-./functions/test_functions.sh
-
-printf "${green}\n\n====================================================================================================\n${egreen}"
 printf "${green}\t\t\tEnable Basic Authentication for functions\n${egreen}"
 printf "${green}====================================================================================================\n\n${egreen}"
 
-./auth/enable_basic_auth.sh
+./ingress/kong/auth/enable_basic_auth.sh
 
