@@ -1,0 +1,22 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: oidc-plugin
+  namespace: openfaas
+spec:
+  rules:
+  - host: oidc.secure-faas.com
+    http:
+      paths:
+      - backend:
+          serviceName: oidc-plugin
+          servicePort: 8080
+  - host: gw.secure-faas.com
+    http:
+      paths:
+      - backend:
+          serviceName: gateway
+          servicePort: 8080

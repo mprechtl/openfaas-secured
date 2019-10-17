@@ -58,3 +58,8 @@ printf "${green}================================================================
 
 ./ingress/kong/auth/enable_basic_auth.sh
 
+printf "${green}\n\n====================================================================================================\n${egreen}"
+printf "${green}\t\t\tEnable OIC for OpenFaaS Gateway\n${egreen}"
+printf "${green}====================================================================================================\n\n${egreen}"
+
+./scripts/07_enable_oic_for_openfaas.sh

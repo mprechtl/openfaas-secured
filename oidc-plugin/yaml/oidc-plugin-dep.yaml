@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: openfaas
+    component: oidc-plugin
+  name: oidc-plugin
+  namespace: "openfaas"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: oidc-plugin
+  template:
+    metadata:
+      annotations:
+        prometheus.io.scrape: "false"
+      labels:
+        name: oidc-plugin
+    spec:
+      containers:
+      - name:  oidc-plugin
+        resources:
+          requests:
+            memory: "20Mi"
+            cpu: "20m"
+        image: alexellis/oidc-plugin-dist:0.2.0
+        imagePullPolicy: Always
+        securityContext:
+          readOnlyRootFilesystem: false
+          runAsUser: 10001
+        env:
+        - name: cookie_domain
+          value: ".secure-faas.com"
+        - name: base_host
+          value: "http://oidc.secure-faas.com"
+        - name: port
+          value: "8080" # leave as default
+        - name: welcome_page_url
+          value: "http://gw.secure-faas.com"
+        - name: client_id
+          value: ""
+        - name: client_secret
+          value: ""
+        - name: authorize_url
+          value: ""
+        - name: public_key_path
+          value: ""  # leave blank if using jwks
+        - name: audience
+          value: ""
+        - name: token_url
+          value: ""
+        - name: scopes
+          value: "openid profile email"
+        - name: jwks_url
+          value: ""
+        - name: insecure_tls
+          value: "false"
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
