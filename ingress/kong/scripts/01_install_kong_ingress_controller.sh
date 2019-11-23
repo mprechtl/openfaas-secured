@@ -1,4 +1,6 @@
-helm repo add default https://hub.helm.sh
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
-helm install stable/kong -n ingress --namespace kong --set ingressController.enabled=true
+
+kubectl create namespace kong
+helm install ingress stable/kong --namespace kong --set ingressController.enabled=true
 
