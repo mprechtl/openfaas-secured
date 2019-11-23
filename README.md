@@ -6,8 +6,8 @@
  - Minikube
  - FaaS-CLI
  - Kubectl
- - Helm
-
+ - Helm (>= 3.0.0)
+ 
 ## Installing and Deployment
 
  - Choose an Identity Provider (such as [Auth0](https://auth0.com/))
