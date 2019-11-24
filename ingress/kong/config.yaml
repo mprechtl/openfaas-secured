@@ -4,4 +4,3 @@ postgresql:
   postgresqlDatabase: kong
   service:
     port: 5432
-

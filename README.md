@@ -8,7 +8,7 @@
  - Kubectl
  - Helm (>= 3.0.0)
  
-## Installing and Deployment
+## Installing
 
  - Choose an Identity Provider (such as [Auth0](https://auth0.com/))
  - Sign up and add the application `OpenFaaS Gateway`
@@ -24,11 +24,22 @@
 
  - Use the OpenFaaS Gateway: http://gw.secure-faas.com
 
+## Deployment of Functions
+
  - Deploy the provided functions by adding the `authorization URL`, `audience URL` and `client-id` to the `faas_cli_login.sh` script and then executing it:
    > $ ./functions/faas_cli_login.sh
 
    After exporting the provided token, you should run:
    > $ ./functions/deploy_functions.sh
 
+## Enable routing and basic authentication
+
+ - Enable routing to the functions:
+   > $ ./ingress/kong/auth/enable_routing.sh
+
  - Now, you are able to enable basic-authentication for the functions by executing:
    > $ ./ingress/kong/auth/enable_basic_auth.sh
+
+ - Test your setup:
+   > $ curl --url ${INGRESS_PROXY_URL}/function/protected-haveibeenpwned --data 'test@test.com' -H "Authorization: Basic ${BASE64_CREDENTIALS}" -v
+   More information provided in the script `ingress/kong/auth/enable_basic_auth.sh`

@@ -39,3 +39,7 @@ curl -k -X POST \
     -d 'strip_path=false' \
     --data-urlencode 'paths[]=/function/basic-register' \
     --data-urlencode 'paths[]=/function/unprotected-haveibeenpwned'
+
+printf "\n"
+
+

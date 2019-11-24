@@ -5,4 +5,5 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 
 kubectl create namespace kong
-helm install ingress stable/kong --namespace kong -f ${ABS_DIR}/../config.yaml --set ingressController.enabled=true
+helm install ingress stable/kong --namespace kong -f ${ABS_DIR}/../config.yaml --set ingressController.enabled=true --set env.database=postgres
+
