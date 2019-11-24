@@ -1,10 +1,10 @@
 blue=$'\e[1;34m'
 eblue=$'\e[0m'
 
-printf "${blue}Wait until Kong ingress controller is up... (Then leave with CTRL + C)${eblue}\n\n"
+printf "${blue}\nWait until Kong ingress controller is up... (Then leave with CTRL + C)${eblue}\n\n"
 kubectl --namespace=kong get deployments -w
 
-printf "\n${blue}Get IP addresses of Kong interfaces...${eblue}\n\n"
+printf "${blue}\n\nGet IP addresses of Kong interfaces...${eblue}\n\n"
 sleep 1
 
 ADMIN_IP=$(minikube service -n kong ingress-kong-admin --url | head -1)

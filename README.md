@@ -17,16 +17,18 @@ This repository should provide guidelines in which way an OpenFaaS environment c
  - Choose an Identity Provider (such as [Auth0](https://auth0.com/))
  - Sign up and add the application `OpenFaaS Gateway`
  - Setup two callback URLs for your application:
-   > http://oidc.secure-faas.com/validate, http://oidc.secure-faas.com/callback, http://127.0.0.1:31111/oauth/callback
+   > https://oidc.secure-faas.com/validate, https://oidc.secure-faas.com/callback
  - When `Auth0` is used, you should choose `Regular Web Application` as application type 
 
  - Edit `/oidc-plugin/oidc-plugin-dep.yaml` to set your OpenID Connect configuration. All endpoints can be found by showing the advanced settings and choosing `Endpoints`. The `client-id` and `client-secret` can be found in the application settings.
+
+ - Add your email address to `ingress/nginx/tls/letsencrypt-issuer.yaml`
 
  - Run the deployment script:
 
     > $ ./deploy.sh
 
- - Use the OpenFaaS Gateway: http://gw.secure-faas.com
+ - Use the OpenFaaS Gateway: https://gw.secure-faas.com
 
 ## Deployment of Functions
 
