@@ -42,4 +42,6 @@
 
  - Test your setup:
    > $ curl --url ${INGRESS_PROXY_URL}/function/protected-haveibeenpwned --data 'test@test.com' -H "Authorization: Basic ${BASE64_CREDENTIALS}" -v
-   More information provided in the script `ingress/kong/auth/enable_basic_auth.sh`
+   
+   For more information see the script `ingress/kong/auth/enable_basic_auth.sh`
+
