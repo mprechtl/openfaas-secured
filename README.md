@@ -1,4 +1,8 @@
 
+# A secured OpenFaaS environment
+
+This repository should provide guidelines in which way an OpenFaaS environment can be secured by relying on techniques and technologies such as OpenID Connect and Kong as ingress controller.
+
 # Getting Started
 
 ## Prerequisites
