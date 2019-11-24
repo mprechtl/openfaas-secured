@@ -35,7 +35,7 @@ This repository should provide guidelines in which way an OpenFaaS environment c
 
    Make sure that cookies are deleted (after redeployment).
 
-   After exporting the provided token, you should run:
+ - After exporting the provided token, you should run:
    > $ ./functions/deploy_functions.sh
 
 ## Enable routing and basic authentication
