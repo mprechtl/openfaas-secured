@@ -3,9 +3,9 @@
 
 ## Prerequisites
 
- - Minikube
- - FaaS-CLI
- - Kubectl
+ - Minikube (>= 1.4.0)
+ - FaaS-CLI (>= 0.9.3)
+ - Kubectl (>= 1.16.1)
  - Helm (>= 3.0.0)
  
 ## Installing
