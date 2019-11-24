@@ -3,8 +3,15 @@ openfaas_password.txt
 openfaas_ui_url.txt
 kong_proxy.txt
 kong_admin_url.txt
+
+# Base64 credentials to invoke a function
 function_password.txt
 function_username.txt
 
+# OIDC credentials
+oidc-plugin-dep.yaml
+faas_cli_login.sh
+
 # OpenFaaS build, template folders, ..
 template/
+
