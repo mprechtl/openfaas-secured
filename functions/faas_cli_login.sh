@@ -13,4 +13,5 @@ faas-cli auth \
   --audience ${AUDIENCE_URL} \
   --client-id ${CLIENT_ID}
 
-printf "\nYou have to save the received token with ${blue}export TOKEN=\"\"${eblue}"
+printf "\nYou have to save the received token with ${blue}export TOKEN=\"\"${eblue}\n"
+
