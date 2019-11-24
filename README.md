@@ -33,6 +33,8 @@ This repository should provide guidelines in which way an OpenFaaS environment c
  - Deploy the provided functions by adding the `authorization URL`, `audience URL` and `client-id` to the `faas_cli_login.sh` script and then executing it:
    > $ ./functions/faas_cli_login.sh
 
+   Make sure that cookies are deleted (after redeployment).
+
    After exporting the provided token, you should run:
    > $ ./functions/deploy_functions.sh
 

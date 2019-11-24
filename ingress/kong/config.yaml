@@ -1,6 +1,11 @@
 postgresql:
   enabled: true
   postgresqlUsername: kong
+  pg_password:
+    valueFrom:
+      secretKeyRef:
+        key: kong
+        name: postgres
   postgresqlDatabase: kong
   service:
     port: 5432
