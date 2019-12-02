@@ -25,11 +25,13 @@ spec:
           requests:
             memory: "20Mi"
             cpu: "20m"
-        image: alexellis/oidc-plugin-dist:0.2.0
+        image: alexellis2/openfaas-oidc-plugin:0.2.4
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: false
           runAsUser: 10001
+        args:
+        - "-license=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiT3BlbkZhYVMgTHRkIiwiZW1haWxfYWRkcmVzcyI6InNhbGVzQG9wZW5mYWFzLmNvbSIsImF1ZCI6ImlubGV0cy1wcm8iLCJleHAiOjE1NzU3NTgyNjMsImp0aSI6IjgwODEiLCJpYXQiOjE1NzUxNTM0NjMsImlzcyI6ImlubGV0cy1wcm8iLCJzdWIiOiJPcGVuRmFhUyBMdGQifQ.KCwXHF3WQ8BQYks6zTOK8N8vWYSbdtrYc70S_h78hNt4tp4MQlaFG1k0hoSzjAOZCPaomyh2T7OEC5tkaqqhqw"
         env:
         - name: cookie_domain
           value: ".secure-faas.com"

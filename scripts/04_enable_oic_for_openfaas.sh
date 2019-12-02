@@ -46,3 +46,8 @@ echo "$(minikube ip) gw.secure-faas.com" | sudo tee -a /etc/hosts
 
 # Enable ingress for minikube
 minikube addons enable ingress
+
+# Wait until OpenFaaS is running
+printf "${blue}\nWait until the OIDC-Plugin of OpenFaaS is running... (Then leave with CTRL + C)${eblue}\n\n"
+
+kubectl get deployments -n openfaas --watch
