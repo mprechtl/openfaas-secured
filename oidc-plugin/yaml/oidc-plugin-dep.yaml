@@ -58,7 +58,7 @@ spec:
         - name: jwks_url
           value: ""
         - name: insecure_tls
-          value: "false"
+          value: "true"
         ports:
         - name: http
           containerPort: 8080
