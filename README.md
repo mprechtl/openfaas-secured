@@ -22,13 +22,13 @@ This repository should provide guidelines in which way an OpenFaaS environment c
 
  - Edit `/oidc-plugin/oidc-plugin-dep.yaml` to set your OpenID Connect configuration. All endpoints can be found by showing the advanced settings and choosing `Endpoints`. The `client-id` and `client-secret` can be found in the application settings.
 
- - Add your email address to `ingress/nginx/tls/letsencrypt-issuer.yaml`
+ - Edit `/oidc-plugin/oidc-plugin-dep.yaml` to set your license key for the OIDC-plugin. You can request a trial or purchase a license from OpenFaaS Ltd via [sales@openfaas.com](mailto:sales@openfaas.com).
 
  - Run the deployment script:
 
     > $ ./deploy.sh
 
- - Use the OpenFaaS Gateway: https://gw.secure-faas.com
+ - Use the OpenFaaS Gateway: https://gw.secure-faas.com (You have to ignore the warning, because a self-signed certificate is used)
 
 ## Deployment of Functions
 
