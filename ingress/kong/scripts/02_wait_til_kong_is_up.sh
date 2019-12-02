@@ -10,12 +10,12 @@ sleep 1
 ADMIN_IP=$(minikube service -n kong ingress-kong-admin --url | head -1)
 PROXY_IP=$(minikube service -n kong ingress-kong-proxy --url | head -1)
 
-echo "Kong-Admin-UI IP: ${ADMIN_IP/http/https}"
-echo "Kong-Proxy IP: ${PROXY_IP}"
+echo "Kong-Admin-UI IP: ${ADMIN_IP/* http/https}"
+echo "Kong-Proxy IP: ${PROXY_IP/* http/http}"
 
-echo ${ADMIN_IP/http/https} > kong_admin_url.txt
-echo ${PROXY_IP} > kong_proxy.txt
+echo ${ADMIN_IP/* http/https} > kong_admin_url.txt
+echo ${PROXY_IP/* http/http} > kong_proxy.txt
 
 printf "\nTesting connectivity to Kong..."
-curl -i ${PROXY_IP}
+curl -i ${PROXY_IP/* http/http}
 printf "\nTest was successful.\n"

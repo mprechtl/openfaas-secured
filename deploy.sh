@@ -33,8 +33,7 @@ printf "${green}================================================================
 
 ./ingress/nginx/scripts/01_install_nginx_ingress_controller.sh
 ./ingress/nginx/scripts/02_wait_til_nginx_is_up.sh
-./ingress/nginx/tls/01_install_cert_manager.sh
-./ingress/nginx/tls/02_enable_tls.sh
+./ingress/nginx/tls/01_create_tls_cert.sh
 
 printf "${green}\n\n====================================================================================================\n${egreen}"
 printf "${green}\t\t\tEnable OIC for OpenFaaS Gateway\n${egreen}"

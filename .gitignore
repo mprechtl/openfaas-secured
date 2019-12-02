@@ -12,6 +12,10 @@ function_username.txt
 oidc-plugin-dep.yaml
 faas_cli_login.sh
 
+# TLS stuff
+tls.crt
+tls.key
+
 # OpenFaaS build, template folders, ..
 template/
 

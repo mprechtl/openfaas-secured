@@ -7,6 +7,11 @@ metadata:
   name: oidc-plugin
   namespace: openfaas
 spec:
+  tls:
+  - hosts:
+    - gw.secure-faas.com
+    - oidc.secure-faas.com
+    secretName: tls-secret
   rules:
   - host: oidc.secure-faas.com
     http:
