@@ -4,13 +4,17 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-  name: oidc-plugin
+  name: openfaas-gateway
   namespace: openfaas
 spec:
+  tls:
+  - hosts:
+    - gw.secure-faas.com
+    secretName: tls-secret
   rules:
-  - host: oidc.secure-faas.com
+  - host: gw.secure-faas.com
     http:
       paths:
       - backend:
-          serviceName: oidc-plugin
+          serviceName: gateway
           servicePort: 8080

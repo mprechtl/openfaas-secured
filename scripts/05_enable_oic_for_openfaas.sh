@@ -23,7 +23,7 @@ kubectl patch -n openfaas deploy/gateway --patch '
             "env": [
               {
                 "name": "auth_proxy_url",
-                "value": "https://oidc.secure-faas.com/validate"
+                "value": "http://oidc.secure-faas.com/validate"
               }
             ],
             "name": "gateway"
