@@ -4,9 +4,10 @@ ABS_DIR=$(dirname $ABS_PATH)
 # Create kong namespace
 kubectl create namespace kong
 
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add kong https://charts.konghq.com
 helm repo update
 
-helm install ingress stable/kong --namespace kong -f ${ABS_DIR}/../config.yaml \
+helm install ingress kong/kong --namespace kong -f ${ABS_DIR}/../config.yaml \
   --set ingressController.enabled=true \
-  --set env.database=postgres
+  --set env.database=postgres \
+  --set admin.enabled=true
