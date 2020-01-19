@@ -46,10 +46,14 @@ This repository should provide guidelines in which way an OpenFaaS environment c
    > $ ./ingress/kong/auth/enable_routing.sh
 
  - Now, you are able to enable basic-authentication for the functions by executing:
-   > $ ./ingress/kong/auth/enable_basic_auth.sh
+   > $ ./ingress/kong/auth/01_enable_basic_auth.sh
 
  - Test your setup:
+   > $ ./ingress/kong/auth/02_test_basic_auth.sh
+   
+   or:
+
    > $ curl --url ${INGRESS_PROXY_URL}/function/protected-haveibeenpwned --data 'test@test.com' -H "Authorization: Basic ${BASE64_CREDENTIALS}" -v
    
-   For more information see the script `ingress/kong/auth/enable_basic_auth.sh`
+   For more information see the script `ingress/kong/auth/02_test_basic_auth.sh`
 
